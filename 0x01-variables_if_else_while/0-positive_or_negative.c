@@ -2,18 +2,15 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * main function determines if the number is +, - or 0
- *
- * return 0
- * Return: Always 0 (Success)
+ * main - Prints a random number and states if it is +, -, or 0
+ * Return: 0
  */
-
 int main(void)
 {
 	int n;
 
 	srand(time(0));
-	n = rand() - RAND_MAX / 2;
+	n = rand() - RAND_MAX / 2
 
 	if (n < 0)
 	{
@@ -28,4 +25,5 @@ int main(void)
 		printf("%d is %s\n", n, "zero");
 	}
 	return (0);
+	/* My code */
 }
