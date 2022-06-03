@@ -5,35 +5,28 @@
  */
 int main(void)
 {
-	int a;
-	int b;
 	int c;
-	int s;
-	int n;
+	int i;
 
-	a = '0';
-	b = '0';
-	c = ',';
-	s = ' ';
-	n = '\n';
-
-	while (a <= '9')
+	for (c = '0'; c <= '9'; c++)
 	{
-		putchar(a);
-		putchar(b);
-		b = b + 1;
+		for (i = '0'; i <= '9'; i++)
+		{
+			if (c < i)
+			{
+				putchar(c);
+				putchar(i);
 
-		if (b == ':')
-		{
-			b = '0';
-			a = a + 1;
-		}
-		if (a != ':' && b != ':')
-		{
-			putchar(c);
-			putchar(s);
+				if (c != '8' || (c == '8' && i != '9'))
+				{
+					putchar(',');
+					putchar(' ');
+				}
+
+			}
 		}
 	}
-	putchar(n);
+
+	putchar('\n');
 	return (0);
 }
