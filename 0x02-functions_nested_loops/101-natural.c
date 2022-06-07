@@ -1,17 +1,20 @@
-#include "main.h"
+#include <stdio.h>
 /**
  * main - check for multiple of 3 & 5
  * Return: Always 0.
  */
 int main(void)
 {
-int i;
+int i = 1024;
+int j;
 int sum = 0;
 
-for (i = 0; i < 1024; i++)
+for (j = 0; j < i; j++)
 {
-if ((i % 3) == 0) || (i % 5) == 0)
-sum += i;
+if ((j % 3 == 0)||(j % 5 == 0))
+{
+sum = sum + j;
+}
 }
 printf("%d\n", sum);
 return (0);
