@@ -14,7 +14,7 @@ sum = x + y;
 x = y;
 y = sum;
 if (i == 48)
-print("%ld\n", x);
+printf("%ld\n", x);
 }
 return (0);
 }
