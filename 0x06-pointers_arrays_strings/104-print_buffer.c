@@ -1,8 +1,9 @@
 #include "main.h"
+#include <stdio.h>
 /**
  * print_buffer - print the content of size bytes of the buffer
  * @b: buffer addres
- * @suze: number of characters
+ * @size: number of characters
  */
 void print_buffer(char *b, int size)
 {
