@@ -18,6 +18,6 @@ char *leet(char *s)
 				s[x] = y + '0';
 			}
 		}
-    }
+}
 return (s);
 }
