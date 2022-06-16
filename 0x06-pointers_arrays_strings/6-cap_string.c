@@ -6,32 +6,16 @@
  */
 char *cap_string(char *s)
 {
-	int i, j;
-	int k;
-	char abc[] = ",;.!?(){}\nt\" ";
+int x, y;
+char d[] = " \t\n,;.!?\"(){}";
 
-	for (i = 0, k = 0; s[i] != '\0'; i++)
-	{
-		if (s[0] >= 97 && s[0] <= 122)
-			k = 1;
-		for (j = 0; abc[j] != '\0'; j++)
-		{
-			if (abc[j] == s[i])
-				k = 1;
-		}
-		if (k)
-		{
-			if (s[i] >= 97 && s[i] <= 122)
-			{
-				s[i] -= 32;
-				k = 0;
-			}
-			else if (s[i] >= 65 && s[i] <= 90)
-				k = 0;
-			else if (s[i] >= 48 && s[i] <= 57)
-				k = 0;
-		}
-	}
-
-	return (s);
+for (x = 0; s[x] != '\0'; x++)
+{
+if (s[0] >= 97 && s[0] <= 122)
+s[0] = s[0] - 32;
+for (y = 0; d[y] != '\0'; y++)
+if (s[x] == d[y] && s[x + 1] >= 97 && s[x + 1] <= 122)
+s[x + 1] = s[x + 1] - 32;
+}
+return (s);
 }
