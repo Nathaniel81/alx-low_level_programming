@@ -2,7 +2,7 @@
 /**
  * infinite_add - adds two numbers
  * @n1: the first number
- * @n2: the second number 
+ * @n2: the second number
  * @r: result
  * @size_r: result size
  * Return: a pointer to the result
@@ -33,7 +33,7 @@ break;
 r[i] = add % 10 + '0';
 add /= 10;
 }
-r[i] ='\0';
+r[i] = '\0';
 if (l1 >= 0 || l2 >= 0 || add)
 return (0);
 for (i--, j = 0; i > j; i--, j++)
