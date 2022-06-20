@@ -27,9 +27,6 @@ while (accept[len] != '\0')
 					goto exit;
 			}
 		}
-	}		
+	}
 exit: return (l);
 }
-
-	
-
