@@ -6,43 +6,45 @@
  */
 int is_palindrome(char *s)
 {
-	int plDrm(char *x, int len);
-	int plDrm2(char *x, int len);
-	
-	int len;
+	int x, len;
 
-	len = plDrm(s, 0);
-	return (plDrm2(s, 1));
+	x = 0;
+	len = str_len(s);
+
+	if (*s == 0)
+		return (1);
+
+	return (pldrm(s, len, x));
 }
 /**
- * plDrm - gets the length of x
- * @x: the string
- * @len: int length
+ * str_len - gets the length of x
+ * @s: input
+ * 
  * Return 1 on success, -1 on error
  */
-int plDrm(char *x, int len)
+int str_len(char *s)
 {
-	if (*x == 0)
-	{
-		return (len - 1);
-	}
-	return (plDrm(x + 1, len + 1));
+	if (*s == '\0')
+		return (0);
+
+
+	return (1 + str_len(s + 1));
 }
 /**
- * plDrm2 - annalyzes the strings
- * @x: string input
+ * pldrm - annalyzes the strings
+ * @x: iteration value
  * @len: string length
+ * @s: input 
  * Return 1 on success, on error -1
  */
-int plDrm2(char *x, int len)
+
+int pldrm(char *s, int len, int x)
 {
-	if (*x != *(x + 1))
-	{
-		return (0);
-	}
-	else if (*x == 0)
-	{
+	if (s[x] == s[len / 2])
 		return (1);
-	}
-	return (plDrm2(x + 1, len - 2));
+
+	if (s[x] == s[len - x - 1])
+		return (pldrm(s, len, x + 1));
+	
+	return (0);
 }
