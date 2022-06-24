@@ -10,7 +10,7 @@
 int main(int argc, char **argv)
 {
     int _isnumber(char *s);
-    int i = 0 ,j = 1, k;
+    int i = 0, j = 1, k;
     int coins, cents;
     int cov[5] = {25,10,5,2,1};
 
@@ -38,11 +38,11 @@ int main(int argc, char **argv)
             }
         }
     }
-    if (i == 0)
+    if (j == 0)
     printf("%i\n", coins);
     else
     printf("%s\n", "Error");
-    return (i);
+    return (j);
 }
 /**
  * _isnumber - checks the string if its a number
