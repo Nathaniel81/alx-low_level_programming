@@ -11,10 +11,9 @@ int main(int argc, char **argv)
 {
     int _isnumber(char *s);
     int i = 0, j = 1, k;
-    int coins, cents;
+    int coins = 0, cents;
     int cov[5] = {25,10,5,2,1};
 
-    coins = 0;
     if (argc == 2)
     {
         if (_isnumber(argv[1]))
