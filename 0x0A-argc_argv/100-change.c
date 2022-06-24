@@ -9,34 +9,34 @@
  */
 int main(int argc, char **argv)
 {
-int _isnumber(char *s);
-int i = 0 ,j = 1, k;
-int coins, cents;
-int cov[5] = {25,10,5,2,1};
+	int _isnumber(char *s);
+	int i = 0, j = 1, k;
+	int coins, cents;
+	int cov[5] = {25, 10, 5, 2, 1};
 
-coins = 0;
-if (argc == 2)
-{
-if (_isnumber(argv[1]))
-{
-j = 0, cents = atoi(argv[1]);
-if (cents >= 0)
-{
-while (cents != 0)
-{
-k = cents / cov[i];
-if (k == 0)
-{
-i++;
-}
-else
-{
-coins = coins + k;
-cents = cents - (k * cov[i]);
-}
-}
-}
-}
+	coins = 0;
+	if (argc == 2)
+	{
+		if (_isnumber(argv[1]))
+		{
+		j = 0, cents = atoi(argv[1]);
+		if (cents >= 0)
+		{
+			while (cents != 0)
+			{
+				k = cents / cov[i];
+				if (k == 0)
+				{
+					i++;
+				}
+				else
+				{
+					coins = coins + k;
+					cents = cents - (k * cov[i]);
+				}
+			}
+		}
+	}
 }
 if (j == 0)
 printf("%i\n", coins);
@@ -51,18 +51,18 @@ return (j);
  */
 int _isnumber(char *s)
 {
-int i = 0, j = 0, chk = 1;
+	int i = 0, j = 0, chk = 1;
 
-if (*s == '-')
-i++;
-for (; *(s + i) != 0; i++)
-{
-j = isdigit(*(s + i));
-if (j == 0)
-{
-chk = 0;
-break;
-}
-}
-return (chk);
+	if (*s == '-')
+	i++;
+	for (; *(s + i) != 0; i++)
+	{
+		j = isdigit(*(s + i));
+		if (j == 0)
+		{
+			chk = 0;
+			break;
+		}
+	}
+	return (chk);
 }
