@@ -5,13 +5,12 @@
  * str_concat - concatenates two strings
  * @s1: destination string
  * @s2: source string
- * Return: a pointer to a newly allocated space, on success
- *         NULL - on failer
+ * Return: a pointer to a newly allocated space
  */
 char *str_concat(char *s1, char *s2)
 {
 	char *s;
-	int i, j, k, a = 0;
+	int i, j, k;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -37,16 +36,12 @@ char *str_concat(char *s1, char *s2)
 		return (NULL);
 
 	for (k = 0; k < i; k++)
-		s[k] = s1[k];
+		*(s + k) = s1[k];
 
-	s[k] = '\0';
+	for (; k < i + j; k++)
+		*(s + k) = s2[k - i];
 
-	for (a = 0; s[a]; a++)
-	{
-		s[i] = s2[a];
-		i++;
-	}
-	s[i] = '\0';
+	*(s + k) = '\0';
 
 	return (s);
 }
