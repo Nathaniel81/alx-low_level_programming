@@ -13,6 +13,28 @@ char *_sp(char *str)
 	return (str);
 }
 /**
+ * _wcnt - word counter
+ * @str - string
+ * Return: number of words
+ */
+int _wcnt(char *str)
+{
+	int counter = 0, l = 0;
+
+	if (str[l] == ' ')
+		l++;
+
+	while (str[l])
+	{
+		if (str[l] == ' ' && *(str + l - 1) != ' ')
+		    counter++;
+
+		if (str[l] != ' ' && *(str + l + 1) == 0)
+			counter++;
+		l++;
+	}
+}
+/**
  * strtow - returns a pointer to an array of strings
  * @str: string input
  * Return: a double pointer
@@ -21,21 +43,12 @@ char **strtow(char *str)
 {
 	char **s;
 	char *st;
-	int count = 0, i, j, k, x = 0, l = 0, ll;
+	int count, i, j, k, x = 0, l, ll;
 
 	if (str == NULL || *str == 0)
 		return (0);
-	if (str[l] == ' ')
-		l++;
-	while (str[l])
-	{
-		if (str[l] == ' ' && *(str + l - 1) != ' ')
-		       count++;
 
-		if (str[l] != ' ' && *(str + l + 1) == 0)
-			count++;
-		l++;
-	}
+	count = _wcnt(str);
 	if (count == 0)
 		return (0);
 
