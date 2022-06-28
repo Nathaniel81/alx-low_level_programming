@@ -3,7 +3,7 @@
 #include <stdlib.h>
 /**
  * _sp - removes spaces
- * @str - string
+ * @str: string
  * Return: pointer
  */
 char *_sp(char *str)
@@ -14,7 +14,7 @@ char *_sp(char *str)
 }
 /**
  * _wcnt - word counter
- * @str - string
+ * @str: string
  * Return: number of words
  */
 int _wcnt(char *str)
@@ -27,7 +27,7 @@ int _wcnt(char *str)
 	while (str[l])
 	{
 		if (str[l] == ' ' && *(str + l - 1) != ' ')
-		    counter++;
+			counter++;
 
 		if (str[l] != ' ' && *(str + l + 1) == 0)
 			counter++;
