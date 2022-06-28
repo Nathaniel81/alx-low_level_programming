@@ -33,6 +33,7 @@ int _wcnt(char *str)
 			counter++;
 		l++;
 	}
+	return (counter);
 }
 /**
  * strtow - returns a pointer to an array of strings
