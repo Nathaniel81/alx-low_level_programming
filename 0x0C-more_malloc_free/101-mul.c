@@ -1,26 +1,24 @@
 #include "main.h"
 #include <stdlib.h>
-
 /**
- * _atoi_digit - convert a char to integer.
+ * _atoi_digit - converts to an int
  * @x: character to convert.
- * Return: integer.
- **/
-
+ * Return: converted int
+ */
 int _atoi_digit(char x)
 {
-	unsigned int res;
+	unsigned int n;
 
 	if (x <= '9' && x >= '0')
-		res = x - '0';
-	return (res);
+		n = x - '0';
+	return (n);
 }
 
 /**
- * _isNumber - Define if a string is a number.
- * @argv: Pointer to string.
- * Return: success (0).
- **/
+ * _isNumber - checks if the string is a number
+ * @argv: argument vector (pointer to the string)
+ * Return: 0 on success
+ */
 int _isNumber(char *argv)
 {
 	int i;
@@ -28,16 +26,15 @@ int _isNumber(char *argv)
 	for (i = 0; argv[i]; i++)
 		if (argv[i] < 48 || argv[i] > 57)
 			return (1);
+
 	return (0);
 }
-
 /**
  *_calloc - allocate array of size * nmemb.
  * @nmemb: number of elements.
  * @size: size of element.
  * Return: pointer to array.
  **/
-
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *tab;
