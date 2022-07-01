@@ -121,12 +121,10 @@ int main(int argc, char *argv[])
 		}
 		exit(98);
 	}
-	
 	for (l1 = 0; argv[1][l1]; l1++)
 	;
 	for (l2 = 0; argv[2][l2]; l2++)
 	;
-
 	l = l1 + l2;
 	tab = _calloc(l, sizeof(int));
 	if (tab == NULL)
@@ -134,15 +132,13 @@ int main(int argc, char *argv[])
 		free(tab);
 		return (0);
 	}
-
 	for (i = l2 - 1, x = 0; i >= 0; i--)
 	{
-		tab = mul_array(argv[1], l1, argv[2][i], tab, (l - 1 - x));
-		x++;
+	tab = mul_array(argv[1], l1, argv[2][i], tab, (l - 1 - x));
+	x++;
 	}
 	print_array(tab, l);
 	free(tab);
 	exit(EXIT_SUCCESS);
-
 	return (0);
 }
