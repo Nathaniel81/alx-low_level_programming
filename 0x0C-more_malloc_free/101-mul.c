@@ -2,6 +2,20 @@
 #include <stdlib.h>
 #include <stdio.h>
 /**
+ * _atoi_digit - converts to an int
+ * @d:  the char to be converted
+ * Return: an integer
+ **/
+
+int _atoi_digit(char i)
+{
+unsigned int d;
+
+if (i >= '0' && i <= '9')
+d = i - '0';
+return (d);
+}
+/**
  *  _isDigit - checks the string if it is a number
  * @argv: pointer to string
  * Return: 0 on success
