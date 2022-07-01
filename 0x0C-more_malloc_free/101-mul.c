@@ -66,16 +66,16 @@ void *mul_array(char *a1, int l1, char a2, char *a3, int la)
 
 	for (i = l1 - 1; i >= 0 ; i--)
 	{
-		mul = mul + (a1[i] - 48) * (a2 - 48) + (a3[j] - 48);
-		a3[j] = (mul % 10) + 48;
+		mul = mul + (a1[i] - '0') * (a2 - '0') + (a3[j] - '0');
+		a3[j] = (mul % 10) + '0';
 		mul = mul / 10;
 		j--;
 	}
 
 	while (mul != 0)
 	{
-		mul = mul + a3[j] - 48;
-		a3[j] = (mul % 10) + 48;
+		mul = mul + a3[j] - '0';
+		a3[j] = (mul % 10) + '0';
 		mul = mul / 10;
 		j--;
 	}
@@ -92,7 +92,7 @@ void print_array(char *a, int num)
 {
 	int i = 0;
 
-	while (a[i] == 48 && (i + 1) < num)
+	while (a[i] == '0' && (i + 1) < num)
 	i++;
 
 	for (; i < num; i++)
