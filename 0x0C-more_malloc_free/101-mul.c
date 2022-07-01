@@ -1,147 +1,151 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
-/**
- * _atoi_digit - converts to an int
- * @d: the char to be converted
- * Return: an integer
- **/
-int _atoi_digit(char i)
-{
-unsigned int d;
 
-if (i >= '0' && i <= '9')
-d = i - '0';
-return (d);
-}
 /**
- * _isDigit - checks the string if it is a number
- * @argv: pointer to string
- * Return: 0 on success
- */
-int _isDigit(char *argv)
+ * _atoi_digit - convert a char to integer.
+ * @x: character to convert.
+ * Return: integer.
+ **/
+
+int _atoi_digit(char x)
+{
+	unsigned int res;
+
+	if (x <= '9' && x >= '0')
+		res = x - '0';
+	return (res);
+}
+
+/**
+ * _isNumber - Define if a string is a number.
+ * @argv: Pointer to string.
+ * Return: success (0).
+ **/
+int _isNumber(char *argv)
 {
 	int i;
 
 	for (i = 0; argv[i]; i++)
 		if (argv[i] < 48 || argv[i] > 57)
 			return (1);
-
 	return (0);
 }
+
 /**
- *_calloc - allocates array
- * @nmemb: number of elements
- * @size: size of element
- * Return: pointer to the allocated array
+ *_calloc - allocate array of size * nmemb.
+ * @nmemb: number of elements.
+ * @size: size of element.
+ * Return: pointer to array.
  **/
+
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	char *a;
+	char *tab;
 	unsigned int i;
 
-	a = malloc(size * nmemb);
+	tab = malloc(size * nmemb);
 
-	if (a == NULL)
-	return (NULL);
+	if (tab == NULL)
+		return (NULL);
 
 	for (i = 0; i < (size * nmemb); i++)
-		a[i] = '0';
+		tab[i] = '0';
 
-	return (a);
+	return (tab);
 }
+
 /**
- * mul_array - multiplies two arrays
- * @a1: array 1
- * @l1: length of array a1
- * @a2: character
- * @a3: result
- * @la: length of array a3
- * Return: pointer
+ * mul_array - multiply two arrays.
+ * @a1: first array.
+ * @len1: length of array a1.
+ * @a2:  char.
+ * @a3: array for result.
+ * @lena: length of array a3.
+ * Return: pointer to array.
  **/
-void *mul_array(char *a1, int l1, char a2, char *a3, int la)
+
+void *mul_array(char *a1, int len1, char a2, char *a3, int lena)
 {
-	int mul = 0, i, j = la;
+	int mul = 0, i, k;
 
-	for (i = l1 - 1; i >= 0 ; i--)
+	k = lena;
+	for (i = len1 - 1; i >= 0 ; i--)
 	{
-		mul = mul + (a1[i] - '0') * (a2 - '0') + (a3[j] - '0');
-		a3[j] = (mul % 10) + '0';
-		mul = mul / 10;
-		j--;
-	}
-
-	while (mul != 0)
-	{
-		mul += a3[j] - '0';
-		a3[j] = (mul % 10) + '0';
+		mul += (a1[i] - '0') * (a2 - '0') + (a3[k] - '0');
+		a3[k] = (mul % 10) + '0';
 		mul /= 10;
-		j--;
+		k--;
 	}
+
+		while (mul != 0)
+		{
+			mul += a3[k] - '0';
+			a3[k] = (mul % 10) + '0';
+			mul /= 10;
+			k--;
+		}
 
 	return (a3);
 }
 /**
- * print_array - prints all the digits
- * @num: number of elements
- * @a: array
- * Return: nothing
+ * print_array - print all digits of array.
+ * @nb: number of elements to print.
+ * @a: array of elements.
  **/
-void print_array(char *a, int num)
+void print_array(char *a, int nb)
 {
 	int i = 0;
 
-	while (a[i] == '0' && (i + 1) < num)
-	i++;
-
-	for (; i < num; i++)
+	while (a[i] == '0' && (i + 1) < nb)
+	{
+		i++;
+	}
+	for (; i < nb; i++)
 	{
 		_putchar(a[i]);
 	}
-	_putchar(10);
+	_putchar('\n');
 }
-/**
- * main - entry point
- * @argc: argument counter (length)
- * @argv: argument vector
- * Return: 0 on success
- */
-int main(int argc, char **argv)
-{
-	int i, l1, l2, j, l;
-	char err[5] = {'E', 'r', 'r', 'o', 'r', '\n'};
-	char *aa;
 
-	if (argc != 3 || _isDigit(argv[1]) == 1 || _isDigit(argv[2]) == 1)
+/**
+ *main - print the multiplication of 2 numbers.
+ *@argc: array length.
+ *@argv: array.
+ *Return: 0.
+ */
+
+int main(int argc, char *argv[])
+{
+	int i, c, len1, len2, lenres;
+	char E[6] = {'E', 'r', 'r', 'o', 'r', '\n'};
+	char *tabres;
+
+	if (argc != 3 || _isNumber(argv[1]) == 1 || _isNumber(argv[2]) == 1)
 	{
 		for (i = 0; i < 6; i++)
 		{
-			_putchar(err[i]);
+			_putchar(E[i]);
 		}
-		
 		exit(98);
 	}
-	for (l1 = 0; argv[1][l1]; l1++)
+	for (len1 = 0; argv[1][len1]; len1++)
 	;
-
-	for (l2 = 0; argv[2][l2]; l2++)
+	for (len2 = 0; argv[2][len2]; len2++)
 	;
-
-	l = l1 + l2;
-	aa = _calloc(l, sizeof(int));
-	if (aa == NULL)
+	lenres = len1 + len2;
+	tabres = _calloc(lenres, sizeof(int));
+	if (tabres == NULL)
 	{
-		free(aa);
+		free(tabres);
 		return (0);
 	}
-	for (i = l2 - 1, j = 0; i >= 0; i--)
+	for (i = len2 - 1, c = 0; i >= 0; i--)
 	{
-		aa = mul_array(argv[1], l1, argv[2][i], aa, (l - 1 - j));
-		j++;
+	tabres = mul_array(argv[1], len1, argv[2][i], tabres, (lenres - 1 - c));
+	c++;
 	}
-	print_array(aa, l);
-	free(aa);
-
+	print_array(tabres, lenres);
+	free(tabres);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
