@@ -3,10 +3,9 @@
 #include <stdio.h>
 /**
  * _atoi_digit - converts to an int
- * @d:  the char to be converted
+ * @d: the char to be converted
  * Return: an integer
  **/
-
 int _atoi_digit(char i)
 {
 unsigned int d;
@@ -16,16 +15,16 @@ d = i - '0';
 return (d);
 }
 /**
- *  _isDigit - checks the string if it is a number
+ * _isDigit - checks the string if it is a number
  * @argv: pointer to string
  * Return: 0 on success
- **/
+ */
 int _isDigit(char *argv)
 {
 	int i;
 
 	for (i = 0; argv[i]; i++)
-		if (argv[i] <= 47 || argv[i] >= 58)
+		if (argv[i] < 48 || argv[i] > 57)
 			return (1);
 
 	return (0);
@@ -74,9 +73,9 @@ void *mul_array(char *a1, int l1, char a2, char *a3, int la)
 
 	while (mul != 0)
 	{
-		mul = mul + a3[j] - '0';
+		mul += a3[j] - '0';
 		a3[j] = (mul % 10) + '0';
-		mul = mul / 10;
+		mul /= 10;
 		j--;
 	}
 
@@ -110,7 +109,7 @@ void print_array(char *a, int num)
 int main(int argc, char **argv)
 {
 	int i, l1, l2, j, l;
-	char err[5] = {'E', 'r', 'r', 'o', 'r'};
+	char err[5] = {'E', 'r', 'r', 'o', 'r', '\n'};
 	char *aa;
 
 	if (argc != 3 || _isDigit(argv[1]) == 1 || _isDigit(argv[2]) == 1)
@@ -119,7 +118,7 @@ int main(int argc, char **argv)
 		{
 			_putchar(err[i]);
 		}
-		_putchar(10);
+		
 		exit(98);
 	}
 	for (l1 = 0; argv[1][l1]; l1++)
