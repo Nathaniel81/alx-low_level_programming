@@ -56,7 +56,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
  * @l1: length of the first array
  * @a2: character
  * @a3: result
- * @lena: length of a3
+ * @la: length of a3
  * Return: pointer
  */
 void *mul_array(char *a1, int l1, char a2, char *a3, int la)
