@@ -8,12 +8,13 @@
  **/
 int _isDigit(char *argv)
 {
-int i;
-for (i = 0; argv[i]; i++)
-if (argv[i] <= 47 || argv[i] >= 58)
-return (1);
+	int i;
 
-return (0);
+	for (i = 0; argv[i]; i++)
+		if (argv[i] <= 47 || argv[i] >= 58)
+			return (1);
+
+	return (0);
 }
 /**
  *_calloc - allocates array
@@ -23,48 +24,49 @@ return (0);
  **/
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-char *a;
-unsigned int i;
-a = malloc(size * nmemb);
+	char *a;
+	unsigned int i;
 
-if (a == NULL)
-return (NULL);
+	a = malloc(size * nmemb);
 
-for (i = 0; i < (size * nmemb); i++)
-a[i] = '0';
+	if (a == NULL)
+	return (NULL);
 
-return (a);
+	for (i = 0; i < (size * nmemb); i++)
+		a[i] = '0';
+
+	return (a);
 }
 /**
  * mul_array - multiplies two arrays
  * @a1: array 1
- * @len1: length of array a1
+ * @l1: length of array a1
  * @a2: character
- * @a3: result 
+ * @a3: result
  * @la: length of array a3
  * Return: pointer
  **/
 void *mul_array(char *a1, int l1, char a2, char *a3, int la)
 {
-int mul = 0, i, j = la;
-	
-for (i = l1 - 1; i >= 0 ; i--)
-{
-mul = mul + (a1[i] - 48) * (a2 - 48) + (a3[j] - 48);
-a3[j] = (mul % 10) + 48;
-mul = mul / 10;
-j--;
-}
+	int mul = 0, i, j = la;
 
-while (mul != 0)
-{
-mul = mul + a3[j] - 48;
-a3[j] = (mul % 10) + 48;
-mul = mul / 10;
-j--;
-}
+	for (i = l1 - 1; i >= 0 ; i--)
+	{
+		mul = mul + (a1[i] - 48) * (a2 - 48) + (a3[j] - 48);
+		a3[j] = (mul % 10) + 48;
+		mul = mul / 10;
+		j--;
+	}
 
-return (a3);
+	while (mul != 0)
+	{
+		mul = mul + a3[j] - 48;
+		a3[j] = (mul % 10) + 48;
+		mul = mul / 10;
+		j--;
+	}
+
+	return (a3);
 }
 /**
  * print_array - prints all the digits
@@ -74,16 +76,16 @@ return (a3);
  **/
 void print_array(char *a, int num)
 {
-int i = 0;
+	int i = 0;
 
-while (a[i] == 48 && (i + 1) < num)
-i++;
+	while (a[i] == 48 && (i + 1) < num)
+	i++;
 
-for (; i < num; i++)
-{
-_putchar(a[i]);
-}
-_putchar(10);
+	for (; i < num; i++)
+	{
+		_putchar(a[i]);
+	}
+	_putchar(10);
 }
 /**
  * main - entry point
@@ -93,40 +95,40 @@ _putchar(10);
  */
 int main(int argc, char **argv)
 {
-int i, l1, l2, j, l;
-char err[5] = {'E', 'r', 'r', 'o', 'r'};
-char *aa;
+	int i, l1, l2, j, l;
+	char err[5] = {'E', 'r', 'r', 'o', 'r'};
+	char *aa;
 
-if (argc != 3 || _isDigit(argv[1]) == 1 || _isDigit(argv[2]) == 1)
-{
-for (i = 0; i < 6; i++)
-{
-_putchar(err[i]);
-}
-_putchar(10);
-exit(98);
-}
-for (l1 = 0; argv[1][l1]; l1++)
-;
+	if (argc != 3 || _isDigit(argv[1]) == 1 || _isDigit(argv[2]) == 1)
+	{
+		for (i = 0; i < 6; i++)
+		{
+			_putchar(err[i]);
+		}
+		_putchar(10);
+		exit(98);
+	}
+	for (l1 = 0; argv[1][l1]; l1++)
+	;
 
-for (l2 = 0; argv[2][l2]; l2++)
-;
+	for (l2 = 0; argv[2][l2]; l2++)
+	;
 
-l = l1 + l2;
-aa = _calloc(l, sizeof(int));
-if (aa == NULL)
-{
-free(aa);
-return (0);
-}
-for (i = l2 - 1, j = 0; i >= 0; i--)
-{
-aa = mul_array(argv[1], l1, argv[2][i], aa, (l - 1 - j));
-j++;
-}
-print_array(aa, l);
-free(aa);
+	l = l1 + l2;
+	aa = _calloc(l, sizeof(int));
+	if (aa == NULL)
+	{
+		free(aa);
+		return (0);
+	}
+	for (i = l2 - 1, j = 0; i >= 0; i--)
+	{
+		aa = mul_array(argv[1], l1, argv[2][i], aa, (l - 1 - j));
+		j++;
+	}
+	print_array(aa, l);
+	free(aa);
 
-exit(EXIT_SUCCESS);
-return (0);
+	exit(EXIT_SUCCESS);
+	return (0);
 }
