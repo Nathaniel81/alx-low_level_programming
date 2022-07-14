@@ -1,3 +1,6 @@
+;
+
+
 extern printf
 
 section .text
@@ -8,6 +11,7 @@ global main
 
 
 main:
+; prints Hello, Holberton
 
 push rbp
 mov rdi, format
