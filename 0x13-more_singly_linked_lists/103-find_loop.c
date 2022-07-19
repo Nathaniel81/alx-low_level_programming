@@ -4,7 +4,7 @@
  * find_listint_loop - Finds the loop in a linked list,
  * using Floyd's Cycle algo.
  * @head: A pointer to the head of the list.
- * 
+ *
  * Return: The address of the node where the loop starts,
  * or NULL if there is no loop
  */
@@ -14,8 +14,10 @@ listint_t *find_listint_loop(listint_t *head)
 	listint_t *slow;
 	listint_t *fast;
 
-	if (!head)
-		return (NULL);
+		if (!head)
+		{
+			return (NULL);
+		}
 
 		slow = head->next;
 		fast = head->next->next;
