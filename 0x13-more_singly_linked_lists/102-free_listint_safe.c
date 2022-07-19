@@ -1,6 +1,6 @@
 #include "lists.h"
 #include <stdio.h>
-  
+
 /**
  * count_looped - Counts all unique nodes in the list.
  * @slow: A pointer that moves one node at time.
@@ -61,7 +61,7 @@ size_t find_any_loop(const listint_t *head)
 /**
  * free_listint_safe - Frees a listint_t list.
  * @h: A pointer that points to the head of the list pointer.
- * 
+ *
  * Return: The number of nodes in the list.
  */
 
