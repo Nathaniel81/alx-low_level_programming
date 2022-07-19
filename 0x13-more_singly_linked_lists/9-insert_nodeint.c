@@ -1,5 +1,7 @@
 #include "lists.h"
 
+listint_t *make_new(int n);
+
 /**
  * insert_nodeint_at_index - Inserts a new node at a given position.
  * @head: A pointer that points to the head of the listint_t list pointer.
@@ -12,37 +14,60 @@
 
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	listint_t *new, *temp, *p_node;
 	unsigned int i;
+	listint_t *temp, *temp_f,*new_node;
 
-	new = malloc(sizeof(listint_t));
-
-	if (!new)
+	temp = *head;
+	if (head == NULL)
 		return (NULL);
 
-		new->n = n;
-		new->next = NULL;
+	new_node = make_new(n);
+	if (!new_node)
+		return (NULL);
+
+	if (!*head)
+	{
+		*head = new_node;
+		return (new_node);
+	}
 
 	if (idx == 0)
-	{
-		new->next = *head;
-		*head = new;
-	}
+		*head = new_node;
+
+	for (i = 0; i < idx - 1 && temp != NULL && idx != 0; i++)
+		temp = temp->next;
+
+	if (!temp)
+		return (NULL);
+
+	if (idx == 0)
+		new_node->next = temp;
 	else
 	{
-		temp = *head;
-
-		while(idx)
-		{
-			p_node = temp;
-			if (!temp)
-				return (NULL);
-			temp = temp->next;
-			idx--;
-		}
-		new->next = temp;
-		p_node->next = new;
+		temp_f = temp->next;
+		temp->next = new_node;
+		new_node->next = temp_f;
 	}
-	return (new);
+	return (new_node);
 }
 
+/**
+ * make_new - Creates a new node
+ * @n: Data passed to add on the new node
+ * Return: A pointer to a node
+ */
+
+listint_t *make_new(int n)
+{
+	listint_t *new_node;
+
+	new_node = malloc(sizeof(listint_t));
+
+	if (!new_node)
+		return (NULL);
+
+	new_node->n = n;
+	new_node->next = NULL;
+
+	return (new_node);
+}
