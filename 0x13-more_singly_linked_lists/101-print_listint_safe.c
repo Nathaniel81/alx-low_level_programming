@@ -26,15 +26,15 @@ int count_n(const listint_t *slow, const listint_t *fast)
 		nodes++;
 	}
 	return (nodes);
-	
+
 }
 
 /**
  * find_loop - Finds a loop in the list
  * @head: A pointer to the head of the list
- * 
+ *
  * Return: Number of nodes, if there is a loop
- * Otherwise, 0; 
+ * Otherwise, 0;
  */
 
 int find_loop(const listint_t *head)
@@ -60,7 +60,7 @@ int find_loop(const listint_t *head)
 /**
  * print_listint_safe - Prints a listint_t linked list.
  * @head: A pointer to the head of the list.
- * 
+ *
  * Return: Number of nodes in the list.
  */
 
@@ -94,4 +94,3 @@ size_t print_listint_safe(const listint_t *head)
 	}
 	return (nodes);
 }
-		
