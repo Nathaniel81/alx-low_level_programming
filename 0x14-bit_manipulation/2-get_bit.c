@@ -2,9 +2,9 @@
 
 /**
  * get_bit - Gets a bit at a given index.
- * @n: The number passed 
+ * @n: The number passed
  * @index: The index to look for the number
- * 
+ *
  * Return: The value of the bit at index index or -1 if an error occured
  */
 
