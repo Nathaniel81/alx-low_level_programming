@@ -26,7 +26,7 @@ char *make_buf(char *file)
 /**
  * close_file - Closes the file descriptors
  * @f_disc: The file descriptor
- * 
+ *
  */
 
 void close_file(int f_disc)
@@ -53,7 +53,7 @@ void close_file(int f_disc)
  * If file_from does not exist or cannot be read - exit code 98.
  * If file_to cannot be created or written to - exit code 99.
  * If file_to or file_from cannot be closed - exit code 100.
- * 
+ *
  */
 
 int main(int argc, char **argv)
@@ -66,7 +66,6 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-
 		buffer = make_buf(argv[2]);
 		from = open(argv[1], O_RDONLY);
 		rd = read(from, buffer, 1024);
@@ -88,17 +87,13 @@ int main(int argc, char **argv)
 				free(buffer);
 				exit(99);
 			}
-
 			rd = read(from, buffer, 1024);
 			to = open(argv[2], O_WRONLY | O_APPEND);
 
 		} while (rd > 0);
 
-
 		free(buffer);
-
 		close_file(from);
 		close_file(to);
-
 	return (0);
 }
