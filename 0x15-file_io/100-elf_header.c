@@ -66,7 +66,7 @@ for (; i < EI_NIDENT; i++)
 /**
  * class - Prints the class of an ELF header.
  * @e_ident: The ELF Struct
- * 
+ *
  */
 
 void class(unsigned char *e_ident)
@@ -117,7 +117,7 @@ void data(unsigned char *e_ident)
 /**
  * version - print the version of the file
  * @e_ident: The ELF struct
- * 
+ *
  */
 
 void version(unsigned char *e_ident)
@@ -139,7 +139,7 @@ void version(unsigned char *e_ident)
 /**
  * osabi - Prints the osabi
  * @e_ident: The ELF struct
- * 
+ *
  */
 
 void osabi(unsigned char *e_ident)
@@ -186,7 +186,7 @@ void osabi(unsigned char *e_ident)
 /**
  * abi - Prints the ABI version.
  * @e_ident: The ELF struct
- * 
+ *
  */
 
 void abi(unsigned char *e_ident)
@@ -199,7 +199,7 @@ void abi(unsigned char *e_ident)
  * type - Prints the type
  * @e_type: The ELF type.
  * @e_ident: A pointer to an array(the ELF struct)
- * 
+ *
  */
 
 void type(unsigned int e_type, unsigned char *e_ident)
@@ -233,10 +233,10 @@ void type(unsigned int e_type, unsigned char *e_ident)
 
 /**
  * entry - Prints the entry point.
- * 
+ *
  * @e_entry: The data to print
  * @e_ident: A pointer to an array.
- * 
+ *
  */
 
 void entry(unsigned long int e_entry, unsigned char *e_ident)
@@ -246,7 +246,7 @@ void entry(unsigned long int e_entry, unsigned char *e_ident)
 if (e_ident[EI_DATA] == ELFDATA2MSB)
 {
 e_entry = ((e_entry << 8) & 0xFF00FF00) | ((e_entry >> 8) & 0xFF00FF);
-			  
+
 e_entry = (e_entry << 16) | (e_entry >> 16);
 }
 
