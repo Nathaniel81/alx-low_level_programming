@@ -2,6 +2,8 @@
 
 dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 {
+	if (head == NULL)
+		return (NULL);
 	dlistint_t *tail, *new;
 	new = malloc(sizeof(dlistint_t));
 
