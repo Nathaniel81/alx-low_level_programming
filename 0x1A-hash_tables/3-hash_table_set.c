@@ -13,7 +13,7 @@
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *head, *new_node;
-	unsigned long int idx = key_index((const char *)key, ht->size);
+	unsigned long int idx = key_index((const unsigned char *)key, ht->size);
 	head = ht->array[idx];
 	/*traverse = ht->array[idx];*/
 
