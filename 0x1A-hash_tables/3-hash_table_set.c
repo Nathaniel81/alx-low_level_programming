@@ -46,7 +46,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		{
 			if (strcmp(head->key, key) == 0)
 			{
-				free(head->value);
+				/*free(head->value);*/
 				head->value = strdup(value);
 				if (head->value == NULL)
 					return (0);
@@ -63,8 +63,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		new_node->value = strdup(value);
 		if (new_node->value == NULL)
 			return (0);
-		new_node->next = head;
-		head = new_node;
+		new_node->next = ht->array[idx];
+		ht->array[idx] = new_node;
 	}
 	/*printf("%s\n", head->value);*/
 	return (1);
