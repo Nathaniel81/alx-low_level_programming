@@ -34,11 +34,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			return (1);
 		new_node->next = head;
 		head = new_node;
-		/*
-		printf("%s\n", head->key);
-		printf("%s\n", head->value);
-		printf("%d\n", idx);
-		*/
+		/**
+		 * printf("%s\n", head->key);
+		 * printf("%s\n", head->value);
+		 * printf("%d\n", idx);
+		 */
 	}
 	else
 	{
