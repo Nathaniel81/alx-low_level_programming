@@ -1,60 +1,61 @@
 #include "hash_tables.h"
-#include <string.h>
-
-#define SUCCESS  1
-#define FAILURE  0
 
 /**
- * hash_table_set - Adds an element to the hash table. In case of collision,
- * it will add an element at the beginning of  the list.
+ * hash_table_set - Adds an element to the hash table.
  *
- * @ht: The hash table you want to add or update the key/value to
- * @key: The key, and cannot be empty string.
- * @value: The value associated with the key, and can be empty string.
+ * @ht: The hash table to add or update the key/value
+ * @key: The key
+ * @value: The hash table you want to add or update the key/value
  *
  * Return: 1 if it succeeded, 0 otherwise
- *
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node, *traverse;
-	unsigned long int i;
-	char *copy;
+	hash_node_t *head, *new_node;
+	unsigned long int idx;;
 
-	if (ht == NULL || key == NULL || *key == 0 || value == NULL)
-		return (FAILURE);
+	if (ht == NULL || key == NULL || value == NULL || *key == '\0')
+		return (0);
 
-	i =  key_index((const unsigned char *) key, ht->size);
-	traverse = ht->array[i];
-
-	while (traverse)
-	{
-		if (strcmp(traverse->key, key) == 0)
-			break;
-		traverse = traverse->next;
-	}
-	if (traverse == NULL)
+	idx = key_index((const unsigned char *)key, ht->size);
+	head = ht->array[idx];
+	/*traverse = ht->array[idx];*/
+	if (head == NULL)
 	{
 		new_node = malloc(sizeof(hash_node_t));
 		if (new_node == NULL)
-			return (FAILURE);
+			return (0);
 		new_node->key = strdup(key);
-		if (new_node->key == NULL)
-			return (FAILURE);
 		new_node->value = strdup(value);
-		if (new_node->value == NULL)
-			return (FAILURE);
-		new_node->next = ht->array[i];
-		ht->array[i] = new_node;
+		new_node->next = ht->array[idx];
+		ht->array[idx] = new_node;
+		/**
+		 * printf("%s\n", head->key);
+		 * printf("%s\n", head->value);
+		 * printf("%d\n", idx);
+		 */
 	}
 	else
 	{
-		copy = strdup(value);
-		if (copy == NULL)
-			return (FAILURE);
-		free(traverse->value);
-		traverse->value = copy;
+		while (head)
+		{
+			if (strcmp(key, head->key) == 0)
+			{
+				free(head->value);
+				head->value = strdup(value);
+				return (1);
+			}
+			head = head->next;
+		}
+		new_node = malloc(sizeof(hash_node_t));
+		if (new_node == NULL)
+			return (0);
+		new_node->key = strdup(key);
+		new_node->value = strdup(value);
+		new_node->next = ht->array[idx];
+		ht->array[idx] = new_node;
 	}
-	return (SUCCESS);
+	/*printf("%s\n", head->value);*/
+	return (1);
 }
