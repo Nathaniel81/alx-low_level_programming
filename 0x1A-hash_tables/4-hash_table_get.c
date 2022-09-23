@@ -16,6 +16,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int idx;
 
 	idx = key_index((const unsigned char *)key, ht->size);
+	if (idx >= ht->size)
+		return (NULL);
 	traverse = ht->array[idx];
 	while (traverse)
 	{
