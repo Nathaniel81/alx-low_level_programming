@@ -38,7 +38,7 @@ shash_table_t *shash_table_create(unsigned long int size)
  * @key: The key
  * @value: The value associated with the key
  *
- * Return: 1 if it succeeded, otherwise 0 
+ * Return: 1 if it succeeded, otherwise 0
  */
 
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
