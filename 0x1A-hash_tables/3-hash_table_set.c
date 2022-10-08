@@ -5,7 +5,7 @@
  *
  * @ht: The hash table to add or update the key/value
  * @key: The key
- * @value: The hash table you want to add or update the key/value
+ * @value: The hash table to add/or update the key/value
  *
  * Return: 1 if it succeeded, 0 otherwise
  */

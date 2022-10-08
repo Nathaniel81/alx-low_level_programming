@@ -25,10 +25,12 @@ void hash_table_print(const hash_table_t *ht)
 			if (steps != 0)
 			{
 				printf("'%s': '%s'", tmp->key, tmp->value);
+				/*printf("%u\n", i);*/
 				steps = 0;
 			}
 			else
 				printf(", '%s': '%s'", tmp->key, tmp->value);
+				/*printf("%u\n", i);*/
 
 			tmp = tmp->next;
 		}
